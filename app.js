@@ -1,12 +1,13 @@
 // FOR EACH //
-Array.prototype.myEach = function(callbackFn) {
-  for (let i = 0; i < this.length; i++) {   // "this" keyword refers to the array being called.
+Array.prototype.myEach = function (callbackFn) {
+  for (let i = 0; i < this.length; i++) {
+    // "this" keyword refers to the array being called.
     if (this[i] === undefined) continue;
     // callbackFn can take up to 3 input parameters:
     // element
     // element, index
     // element, index, array
-    callbackFn(this[i], i, this);   // callbackFn is "console.log(x,i,myArray)" 
+    callbackFn(this[i], i, this); // callbackFn is "console.log(x,i,myArray)"
   }
 };
 
@@ -48,7 +49,6 @@ console.log(array.some(even));
 // expected output: true
 console.log(array.mySome(even));
 
-
 // REDUCE //
 Array.prototype.myReduce = function (callbackFn, initialValue) {
   var result;
@@ -62,11 +62,11 @@ Array.prototype.myReduce = function (callbackFn, initialValue) {
   return result;
 };
 
-const array2 = [1, 2, 3, 4];
+const arrayReduce = [1, 2, 3, 4];
 
 // 0 + 1 + 2 + 3 + 4
 const initialValue = 0;
-const sumWithInitial = array2.reduce(
+const sumWithInitial = arrayReduce.reduce(
   (previousValue, currentValue) => previousValue + currentValue,
   initialValue
 );
@@ -74,7 +74,7 @@ const sumWithInitial = array2.reduce(
 console.log(sumWithInitial);
 // expected output: 10
 
-const sumWithInitial2 = array2.myReduce(
+const sumWithInitial2 = arrayReduce.myReduce(
   (previousValue, currentValue) => previousValue + currentValue,
   initialValue
 );
@@ -91,9 +91,9 @@ Array.prototype.myIncludes = function (searchElement, fromIndex) {
   return false;
 };
 
-const array1 = [1, 2, 3];
+const array2 = [1, 2, 3];
 
-console.log(array1.includes(2));
+console.log(array2.includes(2));
 // expected output: true
 
 const pets = ["cat", "dog", "bat"];
@@ -104,7 +104,7 @@ console.log(pets.includes("cat"));
 console.log(pets.includes("at"));
 // expected output: false
 
-console.log(array1.myIncludes(2));
+console.log(array2.myIncludes(2));
 // expected output: true
 
 console.log(pets.myIncludes("cat"));
@@ -210,14 +210,14 @@ Object.myValues = function (obj) {
   return result;
 };
 
-const object1 = {
+const object2 = {
   a: "somestring",
   b: 42,
   c: false,
 };
 
-console.log(Object.values(object1));
+console.log(Object.values(object2));
 // expected output: Array ["somestring", 42, false]
 
-console.log(Object.myValues(object1));
+console.log(Object.myValues(object2));
 // expected output: Array ["somestring", 42, false]
