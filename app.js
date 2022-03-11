@@ -50,12 +50,38 @@ console.log(array.mySome(even));
 
 
 // REDUCE //
-Array.prototype.myReduce = function () {
-  // Place your code here.
+Array.prototype.myReduce = function (callbackFn, initialValue) {
+  var result;
+  for (let i = 0; i < this.length; i++) {
+    if (this[i] === undefined) continue;
+    if (i === 0) {
+      if (initialValue === undefined) result = this[i];
+      else result = initialValue + this[i];
+    } else result = callbackFn(result, this[i], i, this);
+  }
+  return result;
 };
 
-// INCLUDES //
+const array2 = [1, 2, 3, 4];
 
+// 0 + 1 + 2 + 3 + 4
+const initialValue = 0;
+const sumWithInitial = array2.reduce(
+  (previousValue, currentValue) => previousValue + currentValue,
+  initialValue
+);
+
+console.log(sumWithInitial);
+// expected output: 10
+
+const sumWithInitial2 = array2.myReduce(
+  (previousValue, currentValue) => previousValue + currentValue,
+  initialValue
+);
+
+console.log(sumWithInitial2);
+
+// INCLUDES //
 Array.prototype.myIncludes = function (searchElement, fromIndex) {
   var fromIndex = fromIndex == undefined ? 0 : fromIndex;
   for (let i = fromIndex; i < this.length; i++) {
@@ -102,7 +128,6 @@ Array.prototype.myPush = function (...args) {
     args_index++;
   }
   return this.length; // Return new length of "this" array
-
 };
 
 // LASTINDEXOF //
