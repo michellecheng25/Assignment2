@@ -4,9 +4,25 @@ Array.prototype.myEach = function () {
 };
 
 // MAP //
-Array.prototype.myMap = function () {
-  // Place your code here.
+Array.prototype.myMap = function (callbackFn) {
+  const result = [];
+  for (let i = 0; i < this.length; i++) {
+    if (this[i] === undefined) continue;
+    result[i] = callbackFn(this[i]);
+  }
+  return result;
 };
+
+console.log("Testing map!");
+const array1 = [1, 4, , 9, 16];
+// pass a function to map
+const map1 = array1.map((x) => x * 2);
+console.log(map1);
+// expected output: Array [2, 8, 18, 32]
+console.log("Testing myMap!");
+const map2 = array1.myMap((x) => x * 2);
+console.log(map2);
+console.log("--------");
 
 // SOME //
 Array.prototype.mySome = function (callbackFn) {
@@ -32,6 +48,7 @@ Array.prototype.myReduce = function () {
 };
 
 // INCLUDES //
+
 Array.prototype.myIncludes = function (searchElement, fromIndex) {
   var fromIndex = fromIndex == undefined ? 0 : fromIndex;
   for (let i = fromIndex; i < this.length; i++) {
@@ -78,6 +95,7 @@ Array.prototype.myPush = function (...args) {
     args_index++;
   }
   return this.length; // Return new length of "this" array
+
 };
 
 // LASTINDEXOF //
@@ -98,6 +116,7 @@ const object1 = {
   a: "somestring",
   b: 42,
   c: false,
+
 };
 
 console.log(Object.keys(object1));
