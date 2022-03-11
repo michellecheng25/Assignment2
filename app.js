@@ -9,9 +9,22 @@ Array.prototype.myMap = function () {
 };
 
 // SOME //
-Array.prototype.mySome = function () {
-  // Place your code here.
+Array.prototype.mySome = function (callbackFn) {
+  for (let i = 0; i < this.length; i++) {
+    if (this[i] === undefined) continue;
+    let result = callbackFn(this[i], i, this);
+    if (result == true) return true;
+  }
+  return false;
 };
+
+const array = [1, 2, 3, 4, 5];
+// checks whether an element is even
+const even = (element) => element % 2 === 0;
+console.log(array.some(even));
+// expected output: true
+console.log(array.mySome(even));
+
 
 // REDUCE //
 Array.prototype.myReduce = function () {
@@ -87,6 +100,7 @@ console.log(Object.myKeys(object1));
 // expected output: Array ["a", "b", "c"]
 
 // VALUES //
+=======
 Object.myValues = function (obj) {
   const result = [];
   for (let key in obj) {
