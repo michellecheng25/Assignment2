@@ -114,11 +114,37 @@ console.log(pets.myIncludes("at"));
 // expected output: false
 
 // INDEXOF //
-Array.prototype.myIndexOf = function () {
-  // Place your code here.
+Array.prototype.myIndexOf = function (searchElement, fromIndex) {
+  var fromIndex = fromIndex == undefined ? 0 : fromIndex;
+  for (let i = fromIndex; i < this.length; i++) {
+    if (this[i] === undefined) continue;
+    if (this[i] === searchElement) return i;
+  }
+  return -1;
 };
 
-// PUSH //
+const beasts = ["ant", "bison", "camel", "duck", "bison"];
+
+console.log(beasts.indexOf("bison"));
+// expected output: 1
+
+// start from index 2
+console.log(beasts.indexOf("bison", 2));
+// expected output: 4
+
+console.log(beasts.indexOf("giraffe"));
+// expected output: -1
+
+console.log(beasts.myIndexOf("bison"));
+// expected output: 1
+
+// start from index 2
+console.log(beasts.myIndexOf("bison", 2));
+// expected output: 4
+
+console.log(beasts.myIndexOf("giraffe"));
+// expected output: -1
+
 Array.prototype.myPush = function (...args) {
   let args_index = 0; // Index of new element
   let length = this.length; // Length of "this" array
