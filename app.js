@@ -9,9 +9,22 @@ Array.prototype.myMap = function () {
 };
 
 // SOME //
-Array.prototype.mySome = function () {
-  // Place your code here.
+Array.prototype.mySome = function (callbackFn) {
+  for (let i = 0; i < this.length; i++) {
+    if (this[i] === undefined) continue;
+    let result = callbackFn(this[i], i, this);
+    if (result == true) return true;
+  }
+  return false;
 };
+
+const array = [1, 2, 3, 4, 5];
+// checks whether an element is even
+const even = (element) => element % 2 === 0;
+console.log(array.some(even));
+// expected output: true
+console.log(array.mySome(even));
+
 
 // REDUCE //
 Array.prototype.myReduce = function () {
@@ -19,9 +32,36 @@ Array.prototype.myReduce = function () {
 };
 
 // INCLUDES //
-Array.prototype.myIncludes = function () {
-  // Place your code here.
+Array.prototype.myIncludes = function (searchElement, fromIndex) {
+  var fromIndex = fromIndex == undefined ? 0 : fromIndex;
+  for (let i = fromIndex; i < this.length; i++) {
+    if (this[i] === undefined) continue;
+    if (this[i] === searchElement) return true;
+  }
+  return false;
 };
+
+const array1 = [1, 2, 3];
+
+console.log(array1.includes(2));
+// expected output: true
+
+const pets = ["cat", "dog", "bat"];
+
+console.log(pets.includes("cat"));
+// expected output: true
+
+console.log(pets.includes("at"));
+// expected output: false
+
+console.log(array1.myIncludes(2));
+// expected output: true
+
+console.log(pets.myIncludes("cat"));
+// expected output: true
+
+console.log(pets.myIncludes("at"));
+// expected output: false
 
 // INDEXOF //
 Array.prototype.myIndexOf = function () {
@@ -46,11 +86,43 @@ Array.prototype.myLastIndexOf = function () {
 };
 
 // KEYS //
-Object.myKeys = function () {
-  // Place your code here.
+Object.myKeys = function (obj) {
+  const result = [];
+  for (let key in obj) {
+    result.push(key);
+  }
+  return result;
 };
 
-// VALUES //
-Object.myValues = function () {
-  // Place your code here.
+const object1 = {
+  a: "somestring",
+  b: 42,
+  c: false,
 };
+
+console.log(Object.keys(object1));
+// expected output: Array ["a", "b", "c"]
+
+console.log(Object.myKeys(object1));
+// expected output: Array ["a", "b", "c"]
+
+// VALUES //
+Object.myValues = function (obj) {
+  const result = [];
+  for (let key in obj) {
+    result.push(obj[key]);
+  }
+  return result;
+};
+
+const object1 = {
+  a: "somestring",
+  b: 42,
+  c: false,
+};
+
+console.log(Object.values(object1));
+// expected output: Array ["somestring", 42, false]
+
+console.log(Object.myValues(object1));
+// expected output: Array ["somestring", 42, false]
