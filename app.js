@@ -66,11 +66,43 @@ Array.prototype.myLastIndexOf = function () {
 };
 
 // KEYS //
-Object.myKeys = function () {
-  // Place your code here.
+Object.myKeys = function (obj) {
+  const result = [];
+  for (let key in obj) {
+    result.push(key);
+  }
+  return result;
 };
 
-// VALUES //
-Object.myValues = function () {
-  // Place your code here.
+const object1 = {
+  a: "somestring",
+  b: 42,
+  c: false,
 };
+
+console.log(Object.keys(object1));
+// expected output: Array ["a", "b", "c"]
+
+console.log(Object.myKeys(object1));
+// expected output: Array ["a", "b", "c"]
+
+// VALUES //
+Object.myValues = function (obj) {
+  const result = [];
+  for (let key in obj) {
+    result.push(obj[key]);
+  }
+  return result;
+};
+
+const object1 = {
+  a: "somestring",
+  b: 42,
+  c: false,
+};
+
+console.log(Object.values(object1));
+// expected output: Array ["somestring", 42, false]
+
+console.log(Object.myValues(object1));
+// expected output: Array ["somestring", 42, false]
