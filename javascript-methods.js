@@ -64,6 +64,7 @@ Array.prototype.myIndexOf = function (searchElement, fromIndex) {
   return -1;
 };
 
+// MYPUSH //
 Array.prototype.myPush = function (...args) {
   let args_index = 0; // Index of new element
   let length = this.length; // Length of "this" array
