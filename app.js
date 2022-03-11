@@ -39,9 +39,25 @@ Array.prototype.myLastIndexOf = function () {
 };
 
 // KEYS //
-Object.myKeys = function () {
-  // Place your code here.
+Object.myKeys = function (obj) {
+  const result = [];
+  for (let key in obj) {
+    result.push(key);
+  }
+  return result;
 };
+
+const object1 = {
+  a: "somestring",
+  b: 42,
+  c: false,
+};
+
+console.log(Object.keys(object1));
+// expected output: Array ["a", "b", "c"]
+
+console.log(Object.myKeys(object1));
+// expected output: Array ["a", "b", "c"]
 
 // VALUES //
 Object.myValues = function () {
