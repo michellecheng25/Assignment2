@@ -131,9 +131,28 @@ Array.prototype.myPush = function (...args) {
 };
 
 // LASTINDEXOF //
-Array.prototype.myLastIndexOf = function () {
-  // Place your code here.
+Array.prototype.myLastIndexOf = function (searchElement, fromIndex) {
+  var fromIndex = fromIndex == undefined ? this.length : fromIndex;
+  for (let i = fromIndex; i >= 0; i--) {
+    if (this[i] === undefined) continue;
+    if (this[i] === searchElement) return i;
+  }
+  return -1;
 };
+
+const animals = ["Dodo", "Tiger", "Penguin", "Dodo"];
+
+console.log(animals.lastIndexOf("Dodo"));
+// expected output: 3
+
+console.log(animals.lastIndexOf("Tiger"));
+// expected output: 1
+
+console.log(animals.myLastIndexOf("Dodo"));
+// expected output: 3
+
+console.log(animals.myLastIndexOf("Tiger"));
+// expected output: 1
 
 // KEYS //
 Object.myKeys = function (obj) {
@@ -148,7 +167,6 @@ const object1 = {
   a: "somestring",
   b: 42,
   c: false,
-
 };
 
 console.log(Object.keys(object1));
