@@ -44,6 +44,22 @@ Object.myKeys = function () {
 };
 
 // VALUES //
-Object.myValues = function () {
-  // Place your code here.
+Object.myValues = function (obj) {
+  const result = [];
+  for (let key in obj) {
+    result.push(obj[key]);
+  }
+  return result;
 };
+
+const object1 = {
+  a: "somestring",
+  b: 42,
+  c: false,
+};
+
+console.log(Object.values(object1));
+// expected output: Array ["somestring", 42, false]
+
+console.log(Object.myValues(object1));
+// expected output: Array ["somestring", 42, false]
